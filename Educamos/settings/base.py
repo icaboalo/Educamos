@@ -66,6 +66,10 @@ TEMPLATES = [
     },
 ]
 
+STATIC_FILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 WSGI_APPLICATION = 'Educamos.wsgi.application'
 
 # Password validation
