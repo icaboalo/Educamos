@@ -1,5 +1,6 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from school.forms import AudioForm
 from .models import *
 from audio.models import *
 
@@ -27,12 +28,20 @@ def subject_view(request, pk):
         return HttpResponseRedirect("/login/")
     else:
         subject = Subject.objects.get(pk=pk)
-        audios = {}
-        audio_objects = Audio.objects.filter(subject=subject)
-        for audio in audio_objects:
-            print(audio.file.url)
-            audios.setdefault('audio', []).append(audio)
-        print(audios)
 
-        dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor}
-        return render(request, 'subject.html', dictionary)
+        if request.method == 'POST':
+            print(request.user)
+            form = AudioForm(request.POST)
+            if form.is_valid():
+
+                return HttpResponseRedirect('/materia/' + str(subject.pk))
+
+        else:
+            audios = {}
+            audio_objects = Audio.objects.filter(subject=subject)
+            for audio in audio_objects:
+                print(audio.file.url)
+                audios.setdefault('audio', []).append(audio)
+            print(audios)
+            dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor}
+            return render(request, 'subject.html', dictionary)
