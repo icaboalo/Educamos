@@ -7,10 +7,14 @@
 <body>
     <h1>{{ subject }}</h1>
     <ul>
-        {% for audio in audio.files %}
-            <li>{{ audio.name }} {{ audio.date }}</li>
+        {% for audio in audios.audio %}
+            <li><a href="{{ audio.file.url }}">{{ audio.name }}</a> {{ audio.date }}</li>
         {% endfor %}
     </ul>
+
+    {% if professor %}
+        <input type="file" accept="audio/*; capture=microphone"/>
+    {% endif %}
 
 </body>
 </html>

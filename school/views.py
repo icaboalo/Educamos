@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from .models import *
+from audio.models import *
 
 # Create your views here.
 def classroom_view(request, pk):
@@ -14,15 +15,24 @@ def classroom_view(request, pk):
         subjects = {}
         subjectObjects = Subject.objects.filter(classroom=classroom)
         for subject in subjectObjects:
-            name = subject.name
-            subjects.setdefault('name', []).append(name)
+            subjects.setdefault('subject', []).append(subject)
 
-        return render(request, 'index.html', {'classroom': classroom, 'subjects': subjects})
+        dictionary = {'classroom': classroom, 'subjects': subjects, 'professor': user.is_professor}
+        print(dictionary)
+        return render(request, 'index.html', dictionary)
 
 def subject_view(request, pk):
     user = request.user
     if not user.is_authenticated():
         return HttpResponseRedirect("/login/")
     else:
+        subject = Subject.objects.get(pk=pk)
+        audios = {}
+        audio_objects = Audio.objects.filter(subject=subject)
+        for audio in audio_objects:
+            print(audio.file.url)
+            audios.setdefault('audio', []).append(audio)
+        print(audios)
 
-        return render(request, 'subject.html')
+        dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor}
+        return render(request, 'subject.html', dictionary)

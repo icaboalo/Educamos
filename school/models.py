@@ -78,7 +78,7 @@ class Subject(models.Model):
 
     # Attributes
     name = models.CharField(max_length=20)
-    # professor = models.ForeignKey(User)
+    professor = models.CharField(max_length=30)
 
     def __str__(self):
         return self.name

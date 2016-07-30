@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'login/$', user_views.login_frontend, name='login'),
 
-    url(r'salon/(?P<pk>[0-9])/$', school_views.classroom_view),
-    url(r'materia/(?P<pk>[0-9])/$', school_views.subject_view),
+    url(r'salon/(?P<pk>[0-9])/$', school_views.classroom_view, name='classroom'),
+    url(r'materia/(?P<pk>[0-9])/$', school_views.subject_view, name='subject'),
 ]
 
 

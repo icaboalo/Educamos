@@ -7,10 +7,9 @@
 <body>
     <h1>{{ classroom }}</h1>
     <ul>
-        {% for subject in subjects.name %}
-            <li>{{ subject }}</li>
+        {% for subject in subjects.subject %}
+            <li><a href="{% url 'subject' subject.pk %}">{{ subject.name }}</a></li>
         {% endfor %}
-
     </ul>
 </body>
 </html>
