@@ -32,3 +32,4 @@ urlpatterns = [
 
 urlpatterns += staticfiles_urlpatterns()
 urlpatterns += static(local.MEDIA_URL, document_root=local.MEDIA_ROOT)
+urlpatterns += static(local.STATIC_URL, document_root=local.STATIC_ROOT)
