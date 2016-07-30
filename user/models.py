@@ -28,7 +28,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     full_name = models.CharField('full name', max_length=50, blank=False)
     email = models.EmailField()
     is_professor = models.BooleanField('professor status', default=False)
-    classroom = models.ForeignKey(Classroom)
+    classroom = models.ForeignKey(Classroom, blank=True, null=True)
     is_staff = models.BooleanField(
         'staff status',
         default=False,

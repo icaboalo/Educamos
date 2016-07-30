@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<styles>
+
+</styles>
+
 <head>
     <meta charset="UTF-8">
     <title>Educamos</title>
-    {% load staticfiles %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
    <div class="container">
-
+       {% load static %}
+       <p>{% static 'style.css' %}</p>
       <form class="form-signin" action="{% url "login" %}" method="post" accept-charset="utf-8">
         <h2 class="form-signin-heading">Sign in</h2>
         <label for="inputEmail" class="sr-only">Usuario</label>
