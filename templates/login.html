@@ -6,11 +6,11 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
+<body class="landing">
 <div class="container">
     <h1>Educaudio</h1>
     <div class="login">
-        <form class="form-signin" action="{% url "login" %}" method="post" accept-charset="utf-8">
+        <form action="{% url "login" %}" method="post" accept-charset="utf-8">
             <h2>Iniciar Sesión</h2>
             <div>
                 <input type="text" id="username" class="textbox" placeholder="Usuario" name="username" required
@@ -23,7 +23,7 @@
             </div>
             {% csrf_token %}
             <button class="submit" type="submit">Ingresar</button>
-            <a class="register" href="{% url 'register' %}">Registrarme</a>
+            <a class="register-button" href="{% url 'register' %}">Registrarme</a>
         </form>
     </div>
 </div>

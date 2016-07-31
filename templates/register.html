@@ -2,15 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Educamos</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
-
-  <form action="" method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Crear cuenta">
-      <a href="{% url 'login'%}">Ya tienes cuenta? Inicia sesión</a>
-  </form>
+<body class="register">
+<div class="containertwo">
+    <div class="">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="register-button" type="submit" value="Crear cuenta">
+            <a href="{% url 'login' %}">Ya tienes cuenta? Inicia sesión</a>
+        </form>
+    </div>
+</div>
 </body>
 </html>
