@@ -76,6 +76,52 @@ h3 {
   margin: 30px auto;
 }
 
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerthree2 {
+  width: 100vw;
+  padding: 20px 0;
+
+}
+
+#control {
+  margin: 1rem 0;
+}
+
+.form {
+  border: solid 2px #27ae60;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 80vw;
+  padding: 1rem 0;
+  margin: 0 auto;
+}
+
+.audioList {
+  border: solid 2px #27ae60;
+  border-radius: 3px;
+  padding: .5rem;
+  margin: .5rem 0;
+  display: block;
+}
+
+.audioList span {
+  margin: .5rem 0;
+  display: block;
+}
+
+.audioList audio {
+  width: 100%;
+}
+
 .login {
     border-style: solid;
     border-color: white;
@@ -262,4 +308,10 @@ h3 {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+}
+.classess {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 90vw;
 }

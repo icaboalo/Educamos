@@ -27,16 +27,16 @@ function onStop () {
 }
 
 function createPlayer (blob) {
-  var url = URL.createObjectURL(blob)
-  var audio = document.createElement('audio')
-
-  audio.controls = true
-  audio.src = url
-  list.appendChild(audio)
+  location.reload()
+  // var url = URL.createObjectURL(blob)
+  // var audio = document.createElement('audio')
+  //
+  // audio.controls = true
+  // audio.src = url
+  // list.appendChild(audio)
 }
 
 function setDefultAction (error, data) {
-  if (error) console.error(error)
 
   icon.classList.remove('fa-refresh', 'fa-spin')
   icon.classList.add('fa-microphone')
