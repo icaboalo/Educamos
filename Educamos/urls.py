@@ -24,11 +24,11 @@ from user import views as user_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'login/$', user_views.login_frontend, name='login'),
+    url(r'register/$', user_views.register, name='register'),
 
     url(r'salon/(?P<pk>[0-9])/$', school_views.classroom_view, name='classroom'),
     url(r'materia/(?P<pk>[0-9])/$', school_views.subject_view, name='subject'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout',
-     {'next_page': '/login/'}, name='logout'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/login/'}, name='logout'),
 ]
 
 

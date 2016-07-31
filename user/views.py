@@ -1,9 +1,13 @@
 from django.contrib.auth import authenticate, login
+# from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from school.views import *
 
 # Create your views here.
+from user.forms import UserCreationForm
+
+
 def login_frontend(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -24,3 +28,15 @@ def login_frontend(request):
             return HttpResponseRedirect("/login/")
     else:
         return render(request, 'login.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            new_user = form.save()
+            return HttpResponseRedirect("/books/")
+    else:
+        form = UserCreationForm()
+    return render(request, "register.html", {
+        'form': form,
+    })
