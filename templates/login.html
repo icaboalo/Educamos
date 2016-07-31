@@ -1,10 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<styles>
-
-</styles>
-
 <head>
     <meta charset="UTF-8">
     <title>Educamos</title>
@@ -13,18 +8,23 @@
 </head>
 <body>
    <div class="container">
-       {% load static %}
-       <p>{% static 'style.css' %}</p>
-      <form class="form-signin" action="{% url "login" %}" method="post" accept-charset="utf-8">
-        <h2 class="form-signin-heading">Sign in</h2>
-        <label for="inputEmail" class="sr-only">Usuario</label>
-        <input type="text" id="username" class="form-control" placeholder="Usuario" name="username" required autofocus>
-        <label for="inputPassword" class="sr-only">Contraseña</label>
-        <input type="password" id="password" class="form-control" placeholder="Contraseña" name="password" required>
-        {% csrf_token %}
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
+       <h1>Educaudio</h1>
+       <div class="login">
+           <form class="form-signin" action="{% url "login" %}" method="post" accept-charset="utf-8">
+                <h2>Iniciar Sesión</h2>
+                <div>
+                    <label for="inputEmail" class="sr-only">Usuario</label>
+                    <input type="text" id="username" class="form-control" placeholder="Usuario" name="username" required autofocus>
+                </div>
+                <div>
+                    <label for="inputPassword" class="sr-only">Contraseña</label>
+                    <input type="password" id="password" class="form-control" placeholder="Contraseña" name="password" required>
+                    <h6>¿Olvidaste tu contraseña?</h6>
+                </div>
+                {% csrf_token %}
+                <button class="submit" type="submit">Ingresar</button>
+          </form>
+       </div>
     </div>
 </body>
 </html>
