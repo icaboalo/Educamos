@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
     <h1>{{ classroom }}</h1>
     <ul>
         {% for subject in subjects.subject %}

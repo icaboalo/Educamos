@@ -36,6 +36,7 @@ def subject_view(request, pk):
             audios.setdefault('audio', []).append(audio)
         print(audios)
         dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor}
+        print(user.username)
         if user.is_professor:
             if request.method == 'POST':
                 form = AudioForm(request.POST, request.FILES)
@@ -43,7 +44,6 @@ def subject_view(request, pk):
                 if form.is_valid():
                     print(request.FILES)
                     file = request.FILES['file']
-                    # os.rename(file, file.replace(' ', '_'))
                     instance = Audio(file=file, name=form.data['name'], subject=subject)
                     instance.save()
                     return HttpResponseRedirect('/materia/' + str(subject.pk))
