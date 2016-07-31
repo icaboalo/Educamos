@@ -141,7 +141,6 @@ h3 {
     position: fixed;
     right: 0;
     top: 0;
-
 }
 
 .close:hover {
@@ -174,6 +173,20 @@ h3 {
 .subjects:hover {
     color: #3c8064;
     margin: 20px;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.audio {
+    color: #4ba17d;
+    margin: 0px;
+    text-decoration: none;
+    transition: 1s;
+}
+
+.audio:hover {
+    color: #3c8064;
+    margin: 5px;
     text-decoration: none;
     transition: 1s;
 }
