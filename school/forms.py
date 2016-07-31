@@ -3,5 +3,5 @@ from django import forms
 from audio.models import *
 
 class AudioForm(Form):
-    name = forms.CharField(max_length=30)
-    file = forms.FileField()
+    name = forms.CharField(max_length=30, label='', widget=forms.TextInput(attrs={'placeholder': 'Nombre'}))
+    file = forms.FileField(label='')
