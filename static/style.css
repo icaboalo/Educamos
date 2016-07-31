@@ -35,9 +35,14 @@ h3 {
     font-size: 20px;
     color: white;
     font-family: "Arial Rounded MT Bold";
-    position: absolute;
+    /*position: absolute;*/
+
+    display: flex;
+    flex-direction: column;
+
     right: 0px;
     padding: 40px;
+
 }
 
 
@@ -67,12 +72,22 @@ h3 {
     text-align: left;
 }
 
+.title {
+  margin: 30px auto;
+}
+
 .login {
     border-style: solid;
     border-color: white;
     text-align: center;
     padding-bottom: 23px;
     margin: 0 60px;
+    font-size: 3vmin;
+    max-width: 80vw;
+}
+
+.bt {
+  font-size: 4vmin !important;
 }
 
 .submit {
@@ -115,9 +130,13 @@ h3 {
 }
 
 .textbox {
-    height: 25px;
-    width: 190px;
-    font-size: 15px;
+    display: block;
+    margin: 1rem auto;
+    width: 80%;
+    font-size: 3vmin;
+    padding: 1rem;
+    border: 0;
+    outline: 0;
 }
 
 .already {
