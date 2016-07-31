@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <title>Education</title>
     {% load static %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <style type='text/css'>
+      #recordingslist audio { display: block; margin-bottom: 10px; }
+
+      #control {
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        background: #27ae60;
+        color: #fff;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 200ms ease-in, font-size 200ms ease-in;
+        cursor: pointer;
+      }
+
+      #control:hover {
+        background: #2ecc71;
+        font-size: 1.54rem;
+      }
+    </style>
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -28,9 +51,10 @@
             <li>Estudiar para el exámen semanal.</li>
         </ol>
 
-        {% if professor %}
+        {% if not professor %}
             <div class="create">
                 <form method="post" enctype="multipart/form-data">
+                    <div id="control"><i class="icon fa fa-microphone" aria-hidden="true"></i></div>
                     {% csrf_token %}
 {#                    {{ form }}#}
                     {% for field in form %}
@@ -44,8 +68,19 @@
                     {#            <input type="file" accept="audio/*;capture=microphone">#}
                     <button type="submit" class="submit">Subir</button>
                 </form>
+
+              <div id="recordingslist"></div>
             </div>
+
         {% endif %}
+
+
     </div>
+
+      <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="{% static 'gumadapter.js' %}"></script>
+    <script src="{% static 'recorder.js' %}"></script>
+    <script src="{% static 'audioRecord.js' %}"></script>
+    <script src="{% static 'app.js' %}"></script>
 </body>
 </html>

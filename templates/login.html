@@ -8,7 +8,7 @@
 </head>
 <body class="landing">
 <div class="container">
-    <h1>Educaudio</h1>
+    <h1 class="title">Educaudio</h1>
     <div class="login">
         <form action="{% url "login" %}" method="post" accept-charset="utf-8">
             <h2>Iniciar Sesión</h2>
@@ -19,11 +19,11 @@
             <div>
                 <input type="password" id="password" class="textbox" placeholder="Contraseña" name="password"
                        required>
-                <h6>¿Olvidaste tu contraseña?</h6>
+                <h4>¿Olvidaste tu contraseña?</h4>
             </div>
             {% csrf_token %}
-            <button class="submit" type="submit">Ingresar</button>
-            <a class="register-button" href="{% url 'register' %}">Registrarme</a>
+            <button class="bt submit" type="submit">Ingresar</button>
+            <a class="bt register-button" href="{% url 'register' %}">Registrarme</a>
         </form>
     </div>
 </div>

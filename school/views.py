@@ -46,10 +46,10 @@ def subject_view(request, pk):
                     file = request.FILES['file']
                     instance = Audio(file=file, name=form.data['name'], subject=subject)
                     instance.save()
-                    return HttpResponseRedirect('/materia/' + str(subject.pk))
+                    return HttpResponse("Text only, please.")
                 else:
                     print(form.errors)
-                    return HttpResponseRedirect('/login/')
+                    return HttpResponse("Text only, please.")
             else:
                 form = AudioForm()
                 dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor, 'form': form}
