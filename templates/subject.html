@@ -13,7 +13,7 @@
     </ul>
 
     {% if professor %}
-        <form method="post" style="border: solid red; display: inline;">
+        <form method="post" style="border: solid red; display: inline;" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
 {#            <label for="name">Nombre: </label>#}
