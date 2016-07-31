@@ -91,3 +91,16 @@ h1 {
     width: 190px;
     font-size: 15px;
 }
+
+.already {
+    color: white;
+    margin: 20px;
+    text-decoration: none;
+}
+
+.already:hover {
+    color: #4ba17d;
+    margin: 20px;
+    text-decoration: none;
+    transition: 1s;
+}
