@@ -1,0 +1,1 @@
+web: gunicorn YANA.wsgi --log-file -

@@ -1,0 +1,1 @@
+web: gunicorn Educamos.wsgi --log-file -
