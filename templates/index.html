@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body class="inside">
-    <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
-    <h1>Bienvenido {{ user.full_name }}</h1>
-    <h2>{{ classroom }}</h2>
-    <ul>
-        {% for subject in subjects.subject %}
-            <li><a href="{% url 'subject' subject.pk %}">{{ subject.name }}  |  Prf. {{ subject.professor }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="containerthree">
+        <a href="{% url 'logout' %}" class="close">Cerrar sesión</a>
+        <h2 id="welcome">¡Bienvenida, {{ user.full_name }}!</h2>
+        <h3>Tus clases de {{ classroom }} :</h3>
+        <ul class="classess">
+            {% for subject in subjects.subject %}
+                <li class="subject"><a href="{% url 'subject' subject.pk %}" class="subjects">{{ subject.name }}   |   Prf. {{ subject.professor }} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>

@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Education</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
-    <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
+<body class="inside">
+    <a href="{% url 'logout' %}" class="close">Cerrar sesión</a>
     <h1>{{ subject.classroom.name }}  |  {{ subject }} Prf. {{ subject.professor }}</h1>
     <h3>Audios</h3>
     <ul>
