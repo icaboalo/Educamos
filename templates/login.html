@@ -7,22 +7,27 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-   <div class="container">
-       <h1>Educaudio</h1>
-       <div class="login">
-           <form class="form-signin" action="{% url "login" %}" method="post" accept-charset="utf-8">
-                <h2>Iniciar Sesión</h2>
-                <div>
-                    <input type="text" id="username" class="textbox" placeholder="Usuario" name="username" required autofocus>
-                </div>
-                <div>
-                    <input type="password" id="password" class="textbox" placeholder="Contraseña" name="password" required>
-                    <h6>¿Olvidaste tu contraseña?</h6>
-                </div>
-                {% csrf_token %}
-                <button class="submit" type="submit">Ingresar</button>
-          </form>
-       </div>
+<div class="container">
+    <h1>Educaudio</h1>
+    <div class="login">
+        <form class="form-signin" action="{% url "login" %}" method="post" accept-charset="utf-8">
+            <h2>Iniciar Sesión</h2>
+            <div>
+                <label for="inputEmail" class="sr-only">Usuario</label>
+                <input type="text" id="username" class="form-control" placeholder="Usuario" name="username" required
+                       autofocus>
+            </div>
+            <div>
+                <label for="inputPassword" class="sr-only">Contraseña</label>
+                <input type="password" id="password" class="form-control" placeholder="Contraseña" name="password"
+                       required>
+                <h6>¿Olvidaste tu contraseña?</h6>
+            </div>
+            {% csrf_token %}
+            <button class="submit" type="submit">Ingresar</button>
+            <a class="submit" href="{% url 'register' %}">Registrarme</a>
+        </form>
     </div>
+</div>
 </body>
 </html>
