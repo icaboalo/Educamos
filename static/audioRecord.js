@@ -25,10 +25,12 @@ var csrftoken = getCookie('csrftoken');
 const xhr = (url, data, callback) => {
   var request = new XMLHttpRequest()
   request.onreadystatechange = function () {
-    if (request.readyState === 4 && request.status === 200) {
+    console.warn(request)
+    if (request.status === 200) {
       return callback(null, location.href + request.responseText)
+    } else {
+        callback(new Error('Fail file upload'))
     }
-    callback(new Error('Fail file upload'))
   }
   request.open('POST', url)
   request.send(data)
@@ -36,7 +38,7 @@ const xhr = (url, data, callback) => {
 
 const sendFile = (url, blob, callback) => {
   var formData = new FormData()
-  formData.append(fileType + '-filename', fileName)
+  formData.append('name', fileName)
   formData.append('file', blob)
   formData.append('csrfmiddlewaretoken', csrftoken)
 

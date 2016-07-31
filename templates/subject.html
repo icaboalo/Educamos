@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Education</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     {% load static %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <style type='text/css'>
       #recordingslist audio { display: block; margin-bottom: 10px; }
 
       #control {
-        height: 50px;
-        width: 50px;
-        border-radius: 50px;
+        height: 80px;
+        width: 80px;
+        border-radius: 80px;
         background: #27ae60;
         color: #fff;
         font-size: 1.5rem;
@@ -32,47 +33,48 @@
       rel="stylesheet">
 </head>
 <body class="inside">
-    <div class="containerthree">
-        <a href="{% url 'logout' %}" class="close">Cerrar sesión</a>
+  <a href="{% url 'logout' %}" class="close">Cerrar sesión</a>
+    <div class="containerthree2">
         <h2>{{ subject }}  |  Prf. {{ subject.professor }}</h2>
-        <h3>Audios</h3>
-        <ul class="classess">
-            {% for audio in audios.audio %}
-                <li class="audio">{{ audio.name }}  ||  {{ audio.date }}
-                    <a href="{{ audio.file.url }}"><i class="material-icons">play_arrow</i></a>
-                </li>
-            {% endfor %}
-        </ul>
 
-        <h3>Tareas</h3>
-        <ol>
-            <li>Llevar investigación sobre el teorema de pitagoras.</li>
-            <li>Resolver problemas de la página 22.</li>
-            <li>Estudiar para el exámen semanal.</li>
-        </ol>
+        {% if professor %}
+            <form class="form" method="post" enctype="multipart/form-data">
+              <div class="center"> Presiona para grabar un audio <span id="control"><i class="icon fa fa-microphone" aria-hidden="true"></i></span></div>
+              {% csrf_token %}
+              {#                    {{ form }}#}
 
-        {% if not professor %}
-            <div class="create">
-                <form method="post" enctype="multipart/form-data">
-                    <div id="control"><i class="icon fa fa-microphone" aria-hidden="true"></i></div>
-                    {% csrf_token %}
-{#                    {{ form }}#}
-                    {% for field in form %}
-                        <div class="margin">
-                            {{ field }}
-                        </div>
-                    {% endfor %}
 
-                    {#            <label for="name">Nombre: </label>#}
-                    {#            <input id="name" type="text" name="name" maxlength="30">#}
-                    {#            <input type="file" accept="audio/*;capture=microphone">#}
-                    <button type="submit" class="submit">Subir</button>
-                </form>
-
-              <div id="recordingslist"></div>
-            </div>
+              {#            <label for="name">Nombre: </label>#}
+              {#            <input id="name" type="text" name="name" maxlength="30">#}
+              {#            <input type="file" accept="audio/*;capture=microphone">#}
+            </form>
 
         {% endif %}
+
+        <div class="tareas">
+          <h3>Tareas</h3>
+          <ol>
+              <li>Llevar investigación sobre el teorema de pitagoras.</li>
+              <li>Resolver problemas de la página 22.</li>
+              <li>Estudiar para el exámen semanal.</li>
+          </ol>
+        </div>
+
+
+        <div class="audios">
+          <h3>Audios</h3>
+          <ul class="classess">
+              {% for audio in audios.audio %}
+                  <li class="audioList">
+                    <span>{{ audio.date }}</span>
+                      <audio controls>
+                        <source src="{{ audio.file.url }}" type="audio/wav">
+                        Your browser does not support the audio tag.
+                      </audio>
+                  </li>
+              {% endfor %}
+          </ul>
+        </div>
 
 
     </div>

@@ -1,6 +1,6 @@
 import os
-
-from django.http import HttpResponseRedirect
+import json
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from school.forms import AudioForm
 from .models import *
@@ -37,23 +37,26 @@ def subject_view(request, pk):
         print(audios)
         dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor}
         print(user.username)
-        if user.is_professor:
-            if request.method == 'POST':
-                form = AudioForm(request.POST, request.FILES)
-                print(request.FILES)
-                if form.is_valid():
-                    print(request.FILES)
-                    file = request.FILES['file']
-                    instance = Audio(file=file, name=form.data['name'], subject=subject)
-                    instance.save()
-                    return HttpResponse("Text only, please.")
-                else:
-                    print(form.errors)
-                    return HttpResponse("Text only, please.")
-            else:
-                form = AudioForm()
-                dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor, 'form': form}
-                return render(request, 'subject.html', dictionary)
 
+        if request.method == 'POST':
+            form = AudioForm(request.POST, request.FILES)
+            print(request.FILES)
+            if form.is_valid():
+                print('is valid')
+                file = request.FILES['file']
+                instance = Audio(file=file, name=form.data['name'], subject=subject)
+                instance.save()
+                return HttpResponse(json.dumps({'hola': 'holi'}),  content_type = "application/json")
+            else:
+                print('is no valid',  form.errors)
+                # return HttpResponseRedirect('/login/')
         else:
+            print('nu ma')
+            form = AudioForm()
+            dictionary = {'subject': subject, 'audios': audios, 'professor': user.is_professor, 'form': form}
             return render(request, 'subject.html', dictionary)
+        """
+        else:
+            print('ke pedo')
+            return render(request, 'subject.html', dictionary)
+"""
