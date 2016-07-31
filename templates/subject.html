@@ -37,7 +37,7 @@
     <div class="containerthree2">
         <h2>{{ subject }}  |  Prf. {{ subject.professor }}</h2>
 
-        {% if not professor %}
+        {% if professor %}
             <form class="form" method="post" enctype="multipart/form-data">
               <div class="center"> Presiona para grabar un audio <span id="control"><i class="icon fa fa-microphone" aria-hidden="true"></i></span></div>
               {% csrf_token %}
