@@ -23,7 +23,7 @@ from user import views as user_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', user_views.login_frontend),
+    url(r'^/', user_views.login_frontend),
     url(r'login/$', user_views.login_frontend, name='login'),
     url(r'register/$', user_views.register, name='register'),
 
