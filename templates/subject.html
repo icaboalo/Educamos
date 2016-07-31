@@ -7,12 +7,20 @@
 <body>
 
     <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
-    <h1>{{ subject }}</h1>
+    <h1>{{ subject.classroom.name }} {{ subject }} Prf. {{ subject.professor }}</h1>
+    <h3>Audios</h3>
     <ul>
         {% for audio in audios.audio %}
             <li><a href="{{ audio.file.url }}">{{ audio.name }}</a> {{ audio.date }}</li>
         {% endfor %}
     </ul>
+
+    <h3>Tareas</h3>
+    <ol>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ol>
 
     {% if professor %}
         <form method="post" style="border: solid red; display: inline;" enctype="multipart/form-data">

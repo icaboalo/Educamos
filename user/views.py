@@ -34,7 +34,9 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             new_user = form.save()
-            return HttpResponseRedirect("/books/")
+            new_user.is_authenticated = True
+            print(new_user.is_authenticated)
+            return HttpResponseRedirect("/salon/" + str(new_user.classroom.pk))
     else:
         form = UserCreationForm()
     return render(request, "register.html", {

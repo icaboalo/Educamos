@@ -9,7 +9,7 @@
     <h1>{{ classroom }}</h1>
     <ul>
         {% for subject in subjects.subject %}
-            <li><a href="{% url 'subject' subject.pk %}">{{ subject.name }}</a></li>
+            <li><a href="{% url 'subject' subject.pk %}">{{ subject.name }} Prf. {{ subject.professor }}</a></li>
         {% endfor %}
     </ul>
 </body>
