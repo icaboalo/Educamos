@@ -6,6 +6,7 @@ from school.views import *
 
 # Create your views here.
 from user.forms import UserCreationForm
+from user.models import User
 
 
 def login_frontend(request):
@@ -33,10 +34,18 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            new_user = form.save()
-            new_user.is_authenticated = True
-            print(new_user.is_authenticated)
-            return HttpResponseRedirect("/salon/" + str(new_user.classroom.pk))
+            print(form.data['classroom'])
+            classroom = Classroom.objects.get(pk=form.data['classroom'])
+            user = User.objects.create(
+                full_name=form.data['full_name'],
+                username=form.data['username'],
+                classroom=classroom
+            )
+            user.set_password(form.data['password'])
+            user.save()
+            # new_user.is_authenticated = True
+            # print(new_user.is_authenticated)
+            return HttpResponseRedirect("/salon/" + str(user.classroom.pk))
     else:
         form = UserCreationForm()
     return render(request, "register.html", {
