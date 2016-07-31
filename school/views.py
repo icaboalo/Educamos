@@ -20,7 +20,7 @@ def classroom_view(request, pk):
         for subject in subjectObjects:
             subjects.setdefault('subject', []).append(subject)
 
-        dictionary = {'classroom': classroom, 'subjects': subjects, 'professor': user.is_professor}
+        dictionary = {'classroom': classroom, 'subjects': subjects, 'user': user}
         print(dictionary)
         return render(request, 'index.html', dictionary)
 

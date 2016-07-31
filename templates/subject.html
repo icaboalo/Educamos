@@ -5,13 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-
     <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
-    <h1>{{ subject.classroom.name }} {{ subject }} Prf. {{ subject.professor }}</h1>
+    <h1>{{ subject.classroom.name }}  |  {{ subject }} Prf. {{ subject.professor }}</h1>
     <h3>Audios</h3>
     <ul>
         {% for audio in audios.audio %}
-            <li><a href="{{ audio.file.url }}">{{ audio.name }}</a> {{ audio.date }}</li>
+            <li><a href="{{ audio.file.url }}">{{ audio.name }}</a>  ||  {{ audio.date }}</li>
         {% endfor %}
     </ul>
 

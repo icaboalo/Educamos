@@ -8,10 +8,11 @@
 </head>
 <body class="inside">
     <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
-    <h1>{{ classroom }}</h1>
+    <h1>Bienvenido {{ user.full_name }}</h1>
+    <h2>{{ classroom }}</h2>
     <ul>
         {% for subject in subjects.subject %}
-            <li><a href="{% url 'subject' subject.pk %}">{{ subject.name }} Prf. {{ subject.professor }}</a></li>
+            <li><a href="{% url 'subject' subject.pk %}">{{ subject.name }}  |  Prf. {{ subject.professor }}</a></li>
         {% endfor %}
     </ul>
 </body>
