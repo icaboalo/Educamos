@@ -34,18 +34,31 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            print(form.data['classroom'])
             classroom = Classroom.objects.get(pk=form.data['classroom'])
-            user = User.objects.create(
+            new_user = User.objects.create(
                 full_name=form.data['full_name'],
                 username=form.data['username'],
                 classroom=classroom
             )
-            user.set_password(form.data['password'])
-            user.save()
+            new_user.set_password(form.data['password'])
+            new_user.save()
+            user = authenticate(username=new_user.username, password=form.data['password'])
+            print(new_user.password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    # Redirect to a success page.
+                    return HttpResponseRedirect('/salon/' + str(new_user.classroom.pk))
+                else:
+                    # Return a 'disabled account' error message
+                    print('disabled account')
+                    return HttpResponseRedirect("/login/")
+            else:
+                # Return an 'invalid login' error message.
+                print('error message')
+                return HttpResponseRedirect("/login/")
             # new_user.is_authenticated = True
             # print(new_user.is_authenticated)
-            return HttpResponseRedirect("/salon/" + str(user.classroom.pk))
     else:
         form = UserCreationForm()
     return render(request, "register.html", {
