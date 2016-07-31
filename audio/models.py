@@ -14,7 +14,7 @@ class Audio(models.Model):
     # Attributes
     name = models.CharField(max_length=30)
     date = models.DateField(auto_now_add=True)
-    file = models.FileField(upload_to='audios/')
+    file = models.FileField(upload_to='audios/', null=True, blank=True)
 
     def __str__(self):
         return self.name

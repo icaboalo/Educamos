@@ -27,6 +27,8 @@ urlpatterns = [
 
     url(r'salon/(?P<pk>[0-9])/$', school_views.classroom_view, name='classroom'),
     url(r'materia/(?P<pk>[0-9])/$', school_views.subject_view, name='subject'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout',
+     {'next_page': '/login/'}, name='logout'),
 ]
 
 

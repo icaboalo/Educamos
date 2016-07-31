@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+
+    <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
     <h1>{{ subject }}</h1>
     <ul>
         {% for audio in audios.audio %}
@@ -13,7 +15,7 @@
     </ul>
 
     {% if professor %}
-        <form method="post" style="border: solid red; display: inline;">
+        <form method="post" style="border: solid red; display: inline;" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
 {#            <label for="name">Nombre: </label>#}
