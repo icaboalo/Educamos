@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Educaudio</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body>
+<body class="inside">
     <button><a href="{% url 'logout' %}">Cerrar sesión</a></button>
     <h1>{{ classroom }}</h1>
     <ul>

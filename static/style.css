@@ -16,6 +16,13 @@ h1 {
     background-size: cover;
 }
 
+.inside {
+    background: url("img/inside.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
 .container {
     font-size: 20px;
     color: white;
@@ -94,7 +101,7 @@ h1 {
 
 .already {
     color: white;
-    margin: 20px;
+    margin: 40px;
     text-decoration: none;
 }
 
@@ -103,4 +110,9 @@ h1 {
     margin: 20px;
     text-decoration: none;
     transition: 1s;
+}
+
+.almost {
+    margin: 15px;
+    font-size: 15px;
 }
